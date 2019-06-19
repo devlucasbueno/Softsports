@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_evento"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_marginBottom="?attr/actionBarSize">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical" >
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:text="@string/tv_exemplo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp"
+            tools:targetApi="jelly_bean" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtTituloEvento"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_titulo_evento"
+            android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtDataEvento"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_dt_evento"
+            android:inputType="date"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtEsporte"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_esporte"
+            android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_desc"
+            android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtLocal"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_local"
+            android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtHrInicio"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_hor_rio_de_in_cio"
+            android:inputType="time"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtHrFim"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_hor_rio_fim"
+            android:inputType="time"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtNumeroParticipantes"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/custom_edit_text_fragment"
+            android:hint="@string/hint_n_mero_de_participantes"
+            android:inputType="number"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:fontFamily="@font/helvetica_neue_light" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnCriarEvento"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/custom_button"
+            android:shadowColor="@android:color/transparent"
+            android:text="@string/btn_criar_evento"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:layout_marginBottom="40dp"
+            app:fontFamily="@font/helvetica_neue_bold" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityCadastro"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ActivityCadastro">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_cadastro"
+            android:layout_margin="18dp"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/helvetica_neue_bold"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_ft_perfil"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginTop="25dp"
+            android:textSize="22sp"
+            android:textColor="#5e5e5e"
+            app:fontFamily="@font/helvetica_neue_light"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/perfil_example"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iconePerfil"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_margin="3dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginLeft="200dp"
+                android:background="@android:color/transparent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleBackground"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@color/colorPrimary" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnFoto"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/ic_edit_w"
+                    android:padding="15dp"
+                    tools:ignore="RtlHardcoded" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_dados"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginTop="25dp"
+            android:textSize="22sp"
+            android:textColor="#5e5e5e"
+            app:fontFamily="@font/helvetica_neue_light"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtNome"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="@string/hint_nome"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/helvetica_neue_light"
+            android:background="@drawable/custom_edit_text"
+            android:drawableRight="@drawable/ic_person"
+            android:drawableEnd="@drawable/ic_person"
+            />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtSobrenome"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="@string/hint_sobrenome"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/helvetica_neue_light"
+            android:background="@drawable/custom_edit_text"
+            android:inputType="text"
+            android:drawableRight="@drawable/ic_person"
+            android:drawableEnd="@drawable/ic_person"
+            />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="@string/hint_e_mail"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/helvetica_neue_light"
+            android:background="@drawable/custom_edit_text"
+            android:inputType="textEmailAddress"
+            android:drawableRight="@drawable/ic_mail"
+            android:drawableEnd="@drawable/ic_mail"
+            />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtSenha"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="@string/hint_senha"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/helvetica_neue_light"
+            android:background="@drawable/custom_edit_text"
+            android:inputType="textPassword"
+            android:maxLength="8"
+            android:drawableRight="@drawable/ic_lock_stroke"
+            android:drawableEnd="@drawable/ic_lock_stroke"
+
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:text="@string/btnCadastrar"
+            android:textSize="22sp"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:fontFamily="@font/helvetica_neue_bold"
+            android:shadowColor="@android:color/transparent"
+            android:background="@drawable/custom_button" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnVoltar"
+            android:onClick="voltarLogin"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            android:text="@string/btn_cancelar"
+            android:textSize="22sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/helvetica_neue_bold"
+            android:shadowColor="@android:color/transparent"
+            android:background="@drawable/custom_button_stroke" />
+
+    </LinearLayout>
+
+</ScrollView>

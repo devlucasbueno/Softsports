@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navPerfil"
+            android:title="@string/title_perfil"
+            android:icon="@drawable/ic_person"
+            />
+        <item
+            android:id="@+id/navMeusEventos"
+            android:title="@string/title_meus_eventos"
+            android:icon="@drawable/ic_event"
+            />
+    </group>
+
+    <item
+        android:title="@string/title_outros"
+        android:id="@+id/navOutros"
+        >
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/navConfig"
+                android:title="@string/title_config"
+                android:icon="@drawable/ic_config"
+                />
+            <item
+                android:id="@+id/navSair"
+                android:title="@string/title_sair"
+                android:icon="@drawable/ic_sair"
+                />
+            </group>
+        </menu>
+    </item>
+
+</menu>

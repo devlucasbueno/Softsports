@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Softsports</string>
+    <string name="tv_entrar">entrar</string>
+    <string name="hint_e_mail">e-mail</string>
+    <string name="tv_conta">Já possui conta?</string>
+    <string name="hint_senha">senha</string>
+    <string name="hint_esqueci_minha_senha">esqueci minha senha</string>
+    <string name="btnEntrar">entrar</string>
+    <string name="tv_agora_mesmo">Ou então faça o cadastro agora mesmo!</string>
+    <string name="btnCadastrar">cadastrar</string>
+    <string name="tv_registered">SoftSports | Um produto Golden Code ®</string>
+    <string name="tv_cadastrar">cadastrar</string>
+    <string name="tv_dados">Preencha os dados abaixo:</string>
+    <string name="hint_nome">nome</string>
+    <string name="hint_sobrenome">sobrenome</string>
+    <string name="hint_repetir_senha">repetir senha</string>
+    <string name="btnVoltar">voltar</string>
+    <string name="tv_cadastro">cadastro</string>
+    <string name="act_title">Início</string>
+    <string name="tv_lucas_bueno">Lucas Bueno</string>
+    <string name="tv_email">lucxsbueno@gmail.com</string>
+    <string name="title_perfil">Perfil</string>
+    <string name="title_meus_eventos">Meus eventos</string>
+    <string name="title_outros">Outros</string>
+    <string name="title_config">Configurações</string>
+    <string name="title_sair">Sair</string>
+    <string name="open_drawer">Abrir</string>
+    <string name="close_drawer">Fechar</string>
+    <string name="hint_pesquisar">pesquisar um evento</string>
+    <string name="hint_home">Home</string>
+    <string name="bottom_novo_evento">Novo evento</string>
+    <string name="bottom_perfil">Perfil</string>
+    <string name="bottom_lista">Lista</string>
+    <string name="bottom_esportes">Esportes</string>
+    <string name="btnEditar">editar perfil</string>
+    <string name="tv_facebook">facebook.com/lucxsbueno</string>
+    <string name="tv_instagram">instagram.com/lucxsbueno</string>
+    <string name="tv_contato">Liks para contato:</string>
+    <string name="hint_titulo_evento">título do evento</string>
+    <string name="hint_esporte">esporte</string>
+    <string name="hint_local">local</string>
+    <string name="hint_data">data</string>
+    <string name="hint_desc">descrição do evento</string>
+    <string name="btn_criar_evento">criar evento</string>
+    <string name="tv_exemplo">Crie um novo evento, por exemplo: um campeonato de tênis de mesa.</string>
+    <string name="hint_dt_evento">data do evento</string>
+    <string name="hint_hor_rio_de_in_cio">horário de início</string>
+    <string name="hint_hor_rio_fim">horário fim</string>
+    <string name="hint_n_mero_de_participantes">número de participantes</string>
+    <string name="tv_titulo_evento">Título do evento</string>
+    <string name="tv_esporte">Esporte</string>
+    <string name="tv_local_do_evento">Local do evento</string>
+    <string name="tv_nr_entradas">5 pessoas entraram</string>
+    <string name="btn_participar">participar</string>
+    <string name="tv_horario">às 16:00.</string>
+    <string name="tv_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus varius neque.</string>
+    <string name="tv_nome_app">SOFTSPORTS</string>
+    <string name="tab_meus_eventos">MEUS EVENTOS</string>
+    <string name="tab_eventos_ativos">EVENTOS ATIVOS</string>
+    <string name="btn_futebol">Futebol</string>
+    <string name="btn_basquete">Basquete</string>
+    <string name="btn_tenis">Tênis</string>
+    <string name="btn_tenis_de_mesa">Tênis de mesa</string>
+    <string name="btn_rugby">Rugby</string>
+    <string name="btn_volei">Vôlei</string>
+    <string name="btn_surf">Surf</string>
+    <string name="btn_skate">Skate</string>
+    <string name="btn_corrida">Corrida</string>
+    <string name="tv_hr_inicio">16:00 -</string>
+    <string name="tv_hora_termino">17:00.</string>
+    <string name="tv_cadastrados">15 cadastrados</string>
+    <string name="btn_visualizar">visualizar</string>
+    <string name="tv_basquete">Basquete</string>
+    <string name="tv_futebol">Futebol</string>
+    <string name="tv_tenis_de_mesa">Tênis de mesa</string>
+    <string name="tv_fragment_1">fragment 1</string>
+    <string name="tv_fragment_2">fragment 2</string>
+    <string name="btn_adicionar_foto">adicionar foto</string>
+    <string name="tv_ft_perfil">Adicione uma foto de perfil.</string>
+    <string name="btn_cancelar">cancelar</string>
+    <string-array name="array_esportes">
+        <item>Basquete</item>
+        <item>Vôlei</item>
+        <item>Futebol</item>
+        <item>Tênis</item>
+    </string-array>
+</resources>

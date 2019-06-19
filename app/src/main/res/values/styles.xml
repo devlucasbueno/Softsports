@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="MenuItems" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#5E5E5E</item>
+    </style>
+
+    <style name="customToolbar" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:title">SOFTSPORTS</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/helvetica_neue_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="customTabLayout" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/helvetica_neue_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="customAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/helvetica_neue_bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

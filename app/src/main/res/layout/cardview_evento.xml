@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:layout_marginBottom="5dp"
+        tools:targetApi="lollipop"
+        tools:ignore="PrivateResource"
+        android:onClick="abrirActivityDoEvento">
+
+        <!-- Titulo e botão para abrir o conteúdo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvTituloEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="18dp"
+                android:fontFamily="@font/helvetica_neue_bold"
+                android:text="@string/tv_titulo_evento"
+                android:textColor="@color/colorTextDark"
+                android:textSize="22sp"
+                tools:targetApi="jelly_bean" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvEsporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:fontFamily="@font/helvetica_neue_bold"
+                android:text="@string/tv_esporte"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                tools:targetApi="jelly_bean" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvLocalEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:text="@string/tv_local_do_evento"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                tools:targetApi="jelly_bean" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="18dp"
+                android:layout_marginLeft="18dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tvHoraInicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/tv_hr_inicio"
+                    android:textColor="#5E5E5E"
+                    android:textSize="20sp"
+                    tools:targetApi="jelly_bean" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tvHoraTermino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/tv_hora_termino"
+                    android:textColor="#5E5E5E"
+                    android:textSize="20sp"
+                    tools:targetApi="jelly_bean"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvDescricao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="18dp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:text="@string/tv_desc"
+                android:textColor="#5E5E5E"
+                android:textSize="20sp"
+                tools:targetApi="jelly_bean" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvNumParticipantes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:text="@string/tv_nr_entradas"
+                android:textColor="#5E5E5E"
+                android:textSize="20sp"
+                tools:targetApi="jelly_bean" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnParticipar"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/custom_button"
+                android:fontFamily="@font/helvetica_neue_bold"
+                android:shadowColor="@android:color/transparent"
+                android:text="@string/btn_participar"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

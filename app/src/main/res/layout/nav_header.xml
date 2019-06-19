@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:padding="16dp"
+    android:gravity="bottom"
+    android:background="@color/colorPrimaryDark"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@android:color/white" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fotoPerfil"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:onClick="abrirActivityPerfil"
+            android:src="@drawable/ft_perfil"
+            android:layout_margin="3dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            tools:ignore="RtlHardcoded">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/closeDrawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_white"
+                android:background="@android:color/transparent"
+                android:onClick="fecharDrawerLayout"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tvNomeCompleto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_lucas_bueno"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/helvetica_neue_bold"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="6dp"
+        tools:targetApi="jelly_bean" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_email"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/helvetica_neue_light"
+        tools:targetApi="jelly_bean" />
+
+
+</LinearLayout>

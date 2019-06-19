@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "430288108141",
+    "firebase_url": "https://softsports-godencode.firebaseio.com",
+    "project_id": "softsports-godencode",
+    "storage_bucket": "softsports-godencode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430288108141:android:c2fdc072e9c573a7",
+        "android_client_info": {
+          "package_name": "br.com.goldencode.softsports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430288108141-eqlseotvinbeojvh8ub4re3pbaj8elu6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZFKk0-5tQR7UN5bk98g0n38z_oUI6QLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430288108141-eqlseotvinbeojvh8ub4re3pbaj8elu6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
