@@ -73,17 +73,16 @@
             android:id="@+id/btnEntrar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="18dp"
             android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
             android:layout_marginRight="18dp"
+            android:background="@drawable/custom_button"
+            android:shadowColor="@android:color/transparent"
             android:text="@string/btnEntrar"
-            android:textSize="22sp"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:fontFamily="@font/helvetica_neue_bold"
-            android:shadowColor="@android:color/transparent"
-            android:background="@drawable/custom_button"
-            android:onClick="abrirActivityInicio"/>
+            android:textSize="22sp"
+            app:fontFamily="@font/helvetica_neue_bold" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnEsqueciSenha"
