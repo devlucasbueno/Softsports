@@ -10,12 +10,17 @@ import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 
+    //EditTexts
     private AppCompatEditText editTextEmail;
     private AppCompatEditText editTextSenha;
+
+    //Buttons
     private AppCompatButton buttonEntrar;
     private AppCompatButton buttonCadastrar;
+
+    //Outros
     private ProgressDialog progressologin;
     private FirebaseAuth login;
 
@@ -32,20 +37,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextSenha = findViewById(R.id.edtSenha);
         buttonEntrar = findViewById(R.id.btnEntrar);
 
+        //Onclick para acessar o app
+        buttonEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Inicia a próxima atividade
+                Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
-    //ABRE A ACTIVITY DE CADASTRO
+    //Abre a atividade de cadastro
     public void abrirActivityCadastro(View view){
         Intent intent = new Intent(this, ActivityCadastro.class);
         startActivity(intent);
     }
 
-    @Override
-    public void onClick(View v) {
-
-        if(v == buttonEntrar){
-
-        }
-
-    }
 }

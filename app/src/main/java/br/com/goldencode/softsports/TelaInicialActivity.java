@@ -139,6 +139,8 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
 
             case R.id.navSair:{
                 finish();
+                Intent intent = new Intent(TelaInicialActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
             }
 
