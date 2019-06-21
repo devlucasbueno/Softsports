@@ -9,11 +9,11 @@
         android:id="@+id/cardViewEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
         android:layout_marginBottom="5dp"
-        tools:targetApi="lollipop"
+        android:elevation="5dp"
+        android:onClick="abrirActivityDoEvento"
         tools:ignore="PrivateResource"
-        android:onClick="abrirActivityDoEvento">
+        tools:targetApi="lollipop">
 
         <!-- Titulo e botão para abrir o conteúdo -->
         <LinearLayout
@@ -21,18 +21,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tvTituloEvento"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="18dp"
-                android:fontFamily="@font/helvetica_neue_bold"
-                android:text="@string/tv_titulo_evento"
-                android:textColor="@color/colorTextDark"
-                android:textSize="22sp"
-                tools:targetApi="jelly_bean" />
+                android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tvTituloEvento"
+                        android:layout_width="340dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica_neue_bold"
+                        android:text="@string/tv_titulo_evento"
+                        android:textColor="@color/colorTextDark"
+                        android:textSize="22sp"
+                        tools:targetApi="jelly_bean"/>
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/btnSetaPraBaixo"
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_arrow_to_bottom" />
+
+            </LinearLayout>
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tvEsporte"
@@ -61,9 +76,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
-                android:layout_marginLeft="18dp">
+                android:layout_marginBottom="18dp"
+                android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvHoraInicio"
@@ -83,54 +99,61 @@
                     android:text="@string/tv_hora_termino"
                     android:textColor="#5E5E5E"
                     android:textSize="20sp"
-                    tools:targetApi="jelly_bean"/>
+                    tools:targetApi="jelly_bean" />
 
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tvDescricao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="18dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="@string/tv_desc"
-                android:textColor="#5E5E5E"
-                android:textSize="20sp"
-                tools:targetApi="jelly_bean" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tvNumParticipantes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="18dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="@string/tv_nr_entradas"
-                android:textColor="#5E5E5E"
-                android:textSize="20sp"
-                tools:targetApi="jelly_bean" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnParticipar"
+            <LinearLayout
+                android:id="@+id/layoutEsconder"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="18dp"
-                android:background="@drawable/custom_button"
-                android:fontFamily="@font/helvetica_neue_bold"
-                android:shadowColor="@android:color/transparent"
-                android:text="@string/btn_participar"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="22sp" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tvDescricao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/tv_desc"
+                    android:textColor="#5E5E5E"
+                    android:textSize="20sp"
+                    tools:targetApi="jelly_bean" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tvNumParticipantes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/tv_nr_entradas"
+                    android:textColor="#5E5E5E"
+                    android:textSize="20sp"
+                    tools:targetApi="jelly_bean" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnParticipar"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/custom_button"
+                    android:fontFamily="@font/helvetica_neue_bold"
+                    android:shadowColor="@android:color/transparent"
+                    android:text="@string/btn_participar"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
 
 
     </android.support.v7.widget.CardView>

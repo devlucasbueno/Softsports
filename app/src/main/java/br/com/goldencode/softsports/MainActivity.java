@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //Outros
     private ProgressDialog progressologin;
     private FirebaseAuth login;
-
+    Softsports db = new Softsports(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /* TESTE CRUD */
+
 
     }
 

@@ -78,6 +78,7 @@
     <string name="btn_adicionar_foto">adicionar foto</string>
     <string name="tv_ft_perfil">Adicione uma foto de perfil.</string>
     <string name="btn_cancelar">cancelar</string>
+    <string name="softsports">Softsports</string>
     <string-array name="array_esportes">
         <item>Basquete</item>
         <item>Vôlei</item>

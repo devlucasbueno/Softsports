@@ -17,7 +17,6 @@ public class Softsports extends SQLiteOpenHelper {
 
         //Colunas
         private final static String COD_SOFTPLAYER = "cod_softplayer";
-        private final static String FK_ESPORTE = "fk_esporte";
         private final static String NOME = "nome";
         private final static String SOBRENOME = "sobrenome";
         private final static String EMAIL = "email";
@@ -36,7 +35,6 @@ public class Softsports extends SQLiteOpenHelper {
 
         //Colunas
         private final static String COD_EVENTO = "cod_evento";
-        private final static String FK_SOFTPLAYER = "fk_softplayer";
         private final static String NOME_EVENTO= "nome_evento";
         private final static String DT_CRIACAO= "dt_criacao";
         private final static String DT_EVENTO= "dt_evento";
@@ -61,8 +59,7 @@ public class Softsports extends SQLiteOpenHelper {
         String QUERY_TABELA_SOFTPLAYER = "CREATE TABLE " + TABELA_SOFTPLAYER + "("
                 + COD_SOFTPLAYER + " INTEGER PRIMARY KEY, " + NOME + " TEXT, "
                 + SOBRENOME + " TEXT, " + EMAIL + " TEXT, " + SENHA + " TEXT, "
-                + FT_PERFIL + " BLOB, " + " FOREIGN KEY(" + FK_ESPORTE + ") REFERENCES "
-                + TABELA_ESPORTE + "(" + COD_ESPORTE + "))";
+                + FT_PERFIL + " BLOB "+ ")";
 
         db.execSQL(QUERY_TABELA_SOFTPLAYER);
 
@@ -77,9 +74,7 @@ public class Softsports extends SQLiteOpenHelper {
                 + COD_EVENTO + " INTEGER PRIMARY KEY, " + NOME_EVENTO + " TEXT, "
                 + DT_CRIACAO + " TEXT, " + DT_EVENTO + " TEXT, " + OBSERVACOES + " TEXT, "
                 + LOCAL + " TEXT, " + HR_INICIO + " TEXT, " + HR_TERMINO + " TEXT, "
-                + NR_PARTICIPANTES + " INTEGER, " + " FOREIGN KEY(" + FK_ESPORTE + ") REFERENCES "
-                + TABELA_ESPORTE + "(" + COD_ESPORTE + "), " + " FOREIGN KEY(" + FK_SOFTPLAYER + ") REFERENCES "
-                + TABELA_SOFTPLAYER + "(" + COD_SOFTPLAYER + "))";
+                + NR_PARTICIPANTES + " INTEGER)";
 
         db.execSQL(QUERY_TABELA_EVENTO);
 
@@ -97,6 +92,16 @@ public class Softsports extends SQLiteOpenHelper {
 
         //Valores
         ContentValues values = new ContentValues();
+
+    }
+
+    void inserirEsportes(Esporte esporte){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(NOME_ESPORTE, esporte.getNome_esporte());
 
     }
 

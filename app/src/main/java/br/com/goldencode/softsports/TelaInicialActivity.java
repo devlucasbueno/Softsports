@@ -17,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -30,12 +32,15 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
     BottomNavigationView bottomNavigationView;
     Drawable drawable;
     CircleImageView circleImageView;
-
+    TextView toolbarTextView;
+    Softsports db = new Softsports(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
+
+        toolbarTextView =  findViewById(R.id.toolbarText);
 
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
@@ -70,6 +75,19 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
 
         imageButton = findViewById(R.id.closeDrawer);
 
+        /*   TESTE DO CRUD   */
+
+        db.inserirEsportes(new Esporte("Futebol"));
+        db.inserirEsportes(new Esporte("Basquete"));
+        db.inserirEsportes(new Esporte("Tênis de mesa"));
+        db.inserirEsportes(new Esporte("Tênis"));
+        db.inserirEsportes(new Esporte("Rugby"));
+        db.inserirEsportes(new Esporte("Corrida"));
+        db.inserirEsportes(new Esporte("Vôlei"));
+        db.inserirEsportes(new Esporte("Surf"));
+        db.inserirEsportes(new Esporte("Skate"));
+
+
     }
 
     public void abrirActivityPerfil(View view){
@@ -85,17 +103,17 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
                     switch (menuItem.getItemId()){
                         case R.id.bottom_home:{
                             selectedFragment = new HomeFragment();
-                            toolbar.setTitle("Softsports");
+                            toolbarTextView.setText("Softsports");
                             break;
                         }
                         case R.id.bottom_add:{
                             selectedFragment = new NovoEventoFragment();
-                            toolbar.setTitle("Novo evento");
+                            toolbarTextView.setText("Novo evento");
                             break;
                         }
                         case R.id.bottom_list:{
                             selectedFragment = new ListFragment();
-                            toolbar.setTitle("Esportes");
+                            toolbarTextView.setText("Esportes");
                             break;
                         }
                     }

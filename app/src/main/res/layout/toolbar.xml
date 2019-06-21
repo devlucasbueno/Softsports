@@ -14,8 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
-            app:titleMarginStart="5dp"
             android:theme="@style/customToolbar">
+
+            <TextView
+                android:id="@+id/toolbarText"
+                android:layout_marginRight="72dp"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"
+                android:text="@string/softsports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="72dp"/>
 
         </android.support.v7.widget.Toolbar>
 
