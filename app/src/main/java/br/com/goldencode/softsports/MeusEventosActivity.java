@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MeusEventosActivity extends AppCompatActivity {
 
@@ -18,12 +19,15 @@ public class MeusEventosActivity extends AppCompatActivity {
     Drawable drawable;
     TabLayout tabLayout;
     ViewPager viewPager;
+    TextView toolbarTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_eventos);
 
+        toolbarTextView = findViewById(R.id.toolbarText);
+        toolbarTextView.setText("Meus eventos");
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 

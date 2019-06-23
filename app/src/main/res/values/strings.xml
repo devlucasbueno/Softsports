@@ -79,6 +79,13 @@
     <string name="tv_ft_perfil">Adicione uma foto de perfil.</string>
     <string name="btn_cancelar">cancelar</string>
     <string name="softsports">Softsports</string>
+    <string name="tv_rugby">Rugby</string>
+    <string name="tv_tenis">Tênis</string>
+    <string name="tv_volei">Vôlei</string>
+    <string name="tv_surf">Surf</string>
+    <string name="tv_skate">Skate</string>
+    <string name="tv_corrida">Corrida</string>
+    <string name="radiog_esporte">Esporte:</string>
     <string-array name="array_esportes">
         <item>Basquete</item>
         <item>Vôlei</item>

@@ -15,19 +15,16 @@ import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
@@ -39,6 +36,10 @@ public class ActivityCadastro extends AppCompatActivity{
     private AppCompatEditText editTextEmail;
     private AppCompatEditText editTextSenha;
 
+    //RadioGroup
+    private RadioGroup radioGroupEsporte;
+    private RadioButton radioButton;
+
     //Buttons
     private AppCompatButton buttonCadastrar;
     private AppCompatButton buttonPerfil;
@@ -47,6 +48,7 @@ public class ActivityCadastro extends AppCompatActivity{
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private ImageView circleFotoPerfil;
+    Softsports db = new Softsports(this);
 
     //Firebase
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -65,6 +67,9 @@ public class ActivityCadastro extends AppCompatActivity{
         buttonCadastrar = (AppCompatButton) findViewById(R.id.btnCadastrar);
         buttonPerfil = (AppCompatButton) findViewById(R.id.btnFoto);
         circleFotoPerfil = (ImageView) findViewById(R.id.iconePerfil);
+        radioGroupEsporte = findViewById(R.id.radioGroupCadastro);
+
+
 
         //Firebase
         firebaseAuth = FirebaseAuth.getInstance();
@@ -96,7 +101,7 @@ public class ActivityCadastro extends AppCompatActivity{
         finish();
     }
 
-    private void selecionarFoto() {
+    public void selecionarFoto() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -105,11 +110,12 @@ public class ActivityCadastro extends AppCompatActivity{
 
     //Busca a imagem e insere na circleImageView
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri fotoPerfilUri = data.getData();
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && intent != null && intent.getData() != null) {
+
+            Uri fotoPerfilUri = intent.getData();
 
                 circleFotoPerfil.setImageURI(fotoPerfilUri);
                 circleFotoPerfil.setBackgroundColor(getResources().getColor(R.color.colorWhite));
@@ -172,6 +178,7 @@ public class ActivityCadastro extends AppCompatActivity{
         String email = editTextEmail.getText().toString().trim();
         String senha = editTextSenha.getText().toString().trim();
 
+
         if (nome == null || TextUtils.isEmpty(nome)) {
             //se o campo senha estiver vazio
             Toast.makeText(this, "O campo nome está vazio", Toast.LENGTH_SHORT).show();
@@ -203,8 +210,15 @@ public class ActivityCadastro extends AppCompatActivity{
         //se as validações estiverem ok
         //será mostrado o progressdialog
 
+        //RadioButton
+
+
         progressDialog.setMessage("Cadastrando usuário, aguarde.");
         progressDialog.show();
+
+        db.cadastrarSoftplayer(new Usuario(nome, sobrenome, email, senha, 1));
+
+
 
         //Fazer outro método usando o SQLite
         firebaseAuth.createUserWithEmailAndPassword(email, senha)
