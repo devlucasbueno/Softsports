@@ -170,7 +170,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -184,7 +183,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -198,7 +196,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -212,7 +209,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -226,7 +222,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -240,7 +235,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -254,7 +248,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -268,7 +261,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
                 <RadioButton
@@ -282,7 +274,6 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="5dp"
-                    android:onClick="checkButton"
                     />
 
             </RadioGroup>

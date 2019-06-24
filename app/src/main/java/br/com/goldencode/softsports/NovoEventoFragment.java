@@ -1,6 +1,7 @@
 package br.com.goldencode.softsports;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -13,13 +14,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Toast;
+
+import static java.lang.System.in;
 
 public class NovoEventoFragment extends Fragment {
 
@@ -66,7 +73,11 @@ public class NovoEventoFragment extends Fragment {
         final AppCompatEditText editTextHrTermino = (AppCompatEditText) viewEvento.findViewById(R.id.edtHrFim);
         final AppCompatEditText editTextNrParticipantes = (AppCompatEditText) viewEvento.findViewById(R.id.edtNumeroParticipantes);
         final String dataAtual = formatarData.format(data);
+
+        final ScrollView scrollView = viewEvento.findViewById(R.id.layoutCardView);
+
         AppCompatButton buttonCriarNovoEvento = (AppCompatButton) viewEvento.findViewById(R.id.btnCriarEvento);
+
 
         buttonCriarNovoEvento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +146,8 @@ public class NovoEventoFragment extends Fragment {
 
                 int cod_esporte = 0;
 
-                RadioGroup radioesporte = (RadioGroup) viewEvento.findViewById(R.id.radioGroupCadastro);
-                switch (radioesporte.getCheckedRadioButtonId())
+                RadioGroup selectedId = (RadioGroup) viewEvento.findViewById(R.id.radioGroupCadastro);
+                switch (selectedId.getCheckedRadioButtonId())
                 {
                     case R.id.radioFutebol:
                         cod_esporte = 1;
@@ -168,6 +179,13 @@ public class NovoEventoFragment extends Fragment {
 
                 }
 
+
+                //  ----- Pegar o texto do radiobutton ----- //
+                int selected = selectedId.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton) selectedId.findViewById(selected);
+                String text = radioButton.getText().toString();
+
+
                 //Função que controla o progressdialog e cadastra o usuário:
 
                 progressDialog.setMessage("Criando evento, aguarde.");
@@ -184,10 +202,14 @@ public class NovoEventoFragment extends Fragment {
                 pdCanceller.postDelayed(progressRunnable, 3000);
 
                 final int finalCod_esporte = cod_esporte;
+
+                Toast.makeText(getContext(), "Só pra testar, "+finalCod_esporte, Toast.LENGTH_LONG).show();
+
                 progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
                         progressDialog.dismiss();
+
                         Softsports db = new Softsports(getActivity());
                         boolean insert =  db.novoEvento(new Evento(titulo, dataAtual, dataEvento, finalCod_esporte, descricao, local, hrInicio, hrTermino, Integer.parseInt(nrParticipantes)));
 

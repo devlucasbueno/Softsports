@@ -33,12 +33,18 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
     Drawable drawable;
     CircleImageView circleImageView;
     TextView toolbarTextView;
+    private LinearLayout linearLayout;
+
     Softsports db = new Softsports(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
+
+        AppCompatImageButton buttonEsconder = findViewById(R.id.btnSetaPraBaixo);
+
+        linearLayout = findViewById(R.id.layoutEsconder);
 
         toolbarTextView =  findViewById(R.id.toolbarText);
 
@@ -74,19 +80,6 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         });
 
         imageButton = findViewById(R.id.closeDrawer);
-
-        /*   TESTE DO CRUD   */
-
-        db.inserirEsportes(new Esporte("Futebol"));
-        db.inserirEsportes(new Esporte("Basquete"));
-        db.inserirEsportes(new Esporte("Tênis de mesa"));
-        db.inserirEsportes(new Esporte("Tênis"));
-        db.inserirEsportes(new Esporte("Rugby"));
-        db.inserirEsportes(new Esporte("Corrida"));
-        db.inserirEsportes(new Esporte("Vôlei"));
-        db.inserirEsportes(new Esporte("Surf"));
-        db.inserirEsportes(new Esporte("Skate"));
-
 
     }
 

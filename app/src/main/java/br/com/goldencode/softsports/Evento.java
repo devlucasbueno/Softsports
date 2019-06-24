@@ -1,12 +1,41 @@
 package br.com.goldencode.softsports;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Evento {
 
     private int cod_evento;
     private String nomeEvento;
+
+    public Evento(String nomeEvento, String esporte, String dataCriacao) {
+        this.nomeEvento = nomeEvento;
+        this.esporte = esporte;
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Evento(String nomeEvento, String esporte, String dataCriacao, String dataEvento, String observacoes, String local, String hr_inicio, String hr_termino) {
+        this.nomeEvento = nomeEvento;
+        this.esporte = esporte;
+        this.dataCriacao = dataCriacao;
+        this.dataEvento = dataEvento;
+        this.observacoes = observacoes;
+        this.local = local;
+        this.hr_inicio = hr_inicio;
+        this.hr_termino = hr_termino;
+    }
+
+    private String esporte;
     private String dataCriacao;
     private String dataEvento;
     private int fk_esporte;
+    private String observacoes;
+    private String local;
+    private String hr_inicio;
+    private String hr_termino;
+    private int nr_participantes;
+
+    public Evento(){}
 
     public Evento(String nomeEvento, String dataCriacao, String dataEvento, int fk_esporte, String observacoes, String local, String hr_inicio, String hr_termino, int nr_participantes) {
         this.nomeEvento = nomeEvento;
@@ -31,6 +60,14 @@ public class Evento {
         this.hr_inicio = hr_inicio;
         this.hr_termino = hr_termino;
         this.nr_participantes = nr_participantes;
+    }
+
+    public String getEsporte() {
+        return esporte;
+    }
+
+    public void setEsporte(String esporte) {
+        this.esporte = esporte;
     }
 
     public int getCod_evento() {
@@ -113,11 +150,13 @@ public class Evento {
         this.nr_participantes = nr_participantes;
     }
 
-    private String observacoes;
-    private String local;
-    private String hr_inicio;
-    private String hr_termino;
-    private int nr_participantes;
+    public static List<Evento> getEvento(Evento evento){
+        List<Evento> ArrayListEvento = new ArrayList<>();
 
+        ArrayListEvento.add(new Evento(evento.getNomeEvento(), evento.getDataCriacao(), evento.getDataEvento(), evento.getFk_esporte(),evento.getObservacoes(), evento.getLocal(), evento.getHr_inicio(), evento.getHr_termino(), evento.getNr_participantes()));
+
+        return ArrayListEvento;
+
+    }
 
 }

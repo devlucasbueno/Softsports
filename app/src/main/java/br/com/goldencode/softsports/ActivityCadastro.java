@@ -2,10 +2,12 @@ package br.com.goldencode.softsports;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -49,6 +51,11 @@ public class ActivityCadastro extends AppCompatActivity{
     private FirebaseAuth firebaseAuth;
     private ImageView circleFotoPerfil;
     Softsports db = new Softsports(this);
+    public int cod_esporte;
+    public String nome;
+    public String sobrenome;
+    public String email;
+    public String senha;
 
     //Firebase
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -69,7 +76,10 @@ public class ActivityCadastro extends AppCompatActivity{
         circleFotoPerfil = (ImageView) findViewById(R.id.iconePerfil);
         radioGroupEsporte = findViewById(R.id.radioGroupCadastro);
 
-
+        nome = editTextNome.getText().toString().trim();
+        sobrenome = editTextSobrenome.getText().toString().trim();
+        email = editTextEmail.getText().toString().trim();
+        senha = editTextSenha.getText().toString().trim();
 
         //Firebase
         firebaseAuth = FirebaseAuth.getInstance();
@@ -173,11 +183,43 @@ public class ActivityCadastro extends AppCompatActivity{
     //Cadastra um novo usuário no BDD
     private void cadastrarUsuario(){
 
-        String nome = editTextNome.getText().toString();
-        String sobrenome = editTextSobrenome.getText().toString();
-        String email = editTextEmail.getText().toString().trim();
-        String senha = editTextSenha.getText().toString().trim();
+        RadioGroup radioesporte = (RadioGroup) findViewById(R.id.radioGroupCadastro);
+        switch (radioesporte.getCheckedRadioButtonId())
+        {
+            case R.id.radioFutebol:
+                cod_esporte = 1;
+                break;
+            case R.id.radioBasquete:
+                cod_esporte = 2;
+                break;
+            case R.id.radioTenis:
+                cod_esporte = 3;
+                break;
+            case R.id.radioTenisDeMesa:
+                cod_esporte = 4;
+                break;
+            case R.id.radioRugby:
+                cod_esporte = 5;
+                break;
+            case R.id.radioVolei:
+                cod_esporte = 6;
+                break;
+            case R.id.radioSurf:
+                cod_esporte = 7;
+                break;
+            case R.id.radioSkate:
+                cod_esporte = 8;
+                break;
+            case R.id.radioCorrida:
+                cod_esporte = 9;
+                break;
 
+        }
+
+        nome = editTextNome.getText().toString().trim();
+        sobrenome = editTextSobrenome.getText().toString().trim();
+        email = editTextEmail.getText().toString().trim();
+        senha = editTextSenha.getText().toString().trim();
 
         if (nome == null || TextUtils.isEmpty(nome)) {
             //se o campo senha estiver vazio
@@ -208,35 +250,46 @@ public class ActivityCadastro extends AppCompatActivity{
         }
 
         //se as validações estiverem ok
+
         //será mostrado o progressdialog
 
-        //RadioButton
-
+        //Função que controla o progressdialog e cadastra o usuário:
 
         progressDialog.setMessage("Cadastrando usuário, aguarde.");
         progressDialog.show();
+        Runnable progressRunnable = new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.cancel();
 
-        db.cadastrarSoftplayer(new Usuario(nome, sobrenome, email, senha, 1));
+            }
+        };
 
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 3000);
 
+        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                progressDialog.dismiss();
+                boolean verificacao = db.verificaemail(email);
+                if (verificacao == true) {
+                    boolean insert = db.cadastrarSoftplayer(new Usuario(nome, sobrenome, email, senha, cod_esporte));
 
-        //Fazer outro método usando o SQLite
-        firebaseAuth.createUserWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //se o usuário for registrado com sucesso
-                        if(task.isSuccessful()){
-                            progressDialog.dismiss();
-                            finish();
-                            toastSuccess("Usuário cadastrado com sucesso!");
-                        } else {
-                            toastError("O usuário não pode ser cadastrado, tente novamente.");
-                            progressDialog.dismiss();
-                        }
-
+                    if (insert) {
+                        progressDialog.dismiss();
+                        finish();
+                        toastSuccess("Usuário cadastrado com sucesso!");
+                    } else {
+                        toastError("O usuário não pode ser cadastrado, tente novamente.");
+                        progressDialog.dismiss();
                     }
-                });
+                }
+                else{
+                    toastError("Usuário Já Cadastrado, Efetue Login");
+                }
+            }
+        });
 
     }
 

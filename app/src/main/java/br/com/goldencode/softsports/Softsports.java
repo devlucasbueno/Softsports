@@ -75,11 +75,11 @@ public class Softsports extends SQLiteOpenHelper {
 
         //Query evento
         String QUERY_TABELA_EVENTO = "CREATE TABLE " + TABELA_EVENTO + "("
-                + COD_EVENTO + " INTEGER PRIMARY KEY, " + NOME_EVENTO + " TEXT, "
+                + COD_EVENTO + " INTEGER PRIMARY KEY, " + COD_ESPORTE + " INTEGER, " + NOME_EVENTO + " TEXT, "
                 + DT_CRIACAO + " TEXT, " + DT_EVENTO + " TEXT, " + OBSERVACOES + " TEXT, "
                 + LOCAL + " TEXT, " + HR_INICIO + " TEXT, " + HR_TERMINO + " TEXT, "
                 + NR_PARTICIPANTES + " INTEGER, " + " FOREIGN KEY (" + FK_ESPORTE + " ) " + " REFERENCES "
-                + TABELA_ESPORTE + "(" + COD_ESPORTE + " ), " + "FOREIGN KEY (" + FK_USUARIO + " ) " + " REFERENCES " + TABELA_SOFTPLAYER + "(" + COD_SOFTPLAYER + "))";
+                + TABELA_ESPORTE + "(" + COD_ESPORTE + " ))";
 
         db.execSQL(QUERY_TABELA_EVENTO);
 
@@ -88,24 +88,6 @@ public class Softsports extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
-
-    void cadastrarSoftplayer(Usuario softplayer){
-
-        //Escrever na base de dados
-        SQLiteDatabase bdd_softsports = this.getWritableDatabase();
-
-        //Valores
-        ContentValues players = new ContentValues();
-
-        players.put(NOME, softplayer.getNome());
-        players.put(SOBRENOME, softplayer.getSobrenome());
-        players.put(EMAIL, softplayer.getEmail());
-        players.put(SENHA, softplayer.getSenha());
-        players.put(FT_PERFIL, softplayer.getFoto());
-        players.put(FK_ESPORTE, softplayer.getCodEsporte());
-
-        bdd_softsports.insert(TABELA_SOFTPLAYER, null, players);
     }
 
     void inserirEsportes(Esporte esporte){
@@ -145,6 +127,47 @@ public class Softsports extends SQLiteOpenHelper {
         }
         else
             return false;
+
+    }
+    boolean cadastrarSoftplayer(Usuario softplayer) {
+        //Escrever na base de dados
+        SQLiteDatabase bdd_softsports = this.getWritableDatabase();
+
+        //Valores:
+
+        ContentValues players = new ContentValues();
+
+        players.put(NOME, softplayer.getNome());
+        players.put(SOBRENOME, softplayer.getSobrenome());
+        players.put(EMAIL, softplayer.getEmail());
+        players.put(SENHA, softplayer.getSenha());
+        players.put(FK_ESPORTE, softplayer.getCodEsporte());
+
+        bdd_softsports.insert(TABELA_SOFTPLAYER, null, players);
+
+        Cursor cur = bdd_softsports.rawQuery("SELECT COUNT(*) FROM softplayer", null);
+        if (cur.getCount() > 0){
+            bdd_softsports.close(); return true ;
+        }
+        else
+            return false;
+
+
+    }
+
+    boolean login (String email, String senha)
+    {
+        SQLiteDatabase bdd_softsports = this.getReadableDatabase();
+        Cursor c = bdd_softsports.rawQuery("select * from softplayer where email=? and senha=?;",new String[]{email,senha});
+        if(c.getCount()>0) return true;
+        else return false;
+    }
+    boolean verificaemail (String email)
+    {
+        SQLiteDatabase bdd_softsports = this.getReadableDatabase();
+        Cursor c = bdd_softsports.rawQuery("select * from softplayer where email=?;",new String[]{email});
+        if(c.getCount()> 0) return false;
+        else return true;
 
     }
 

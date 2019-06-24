@@ -86,6 +86,8 @@
     <string name="tv_skate">Skate</string>
     <string name="tv_corrida">Corrida</string>
     <string name="radiog_esporte">Esporte:</string>
+    <string name="dia_qualquer">17/06/19</string>
+    <string name="as">às</string>
     <string-array name="array_esportes">
         <item>Basquete</item>
         <item>Vôlei</item>
