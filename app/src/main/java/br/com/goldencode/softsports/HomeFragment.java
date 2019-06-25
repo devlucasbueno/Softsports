@@ -27,13 +27,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        String nome = "Campeonato";
-        String esporte = "Futebol";
+
 
         ArrayList<Evento> exampleList = new ArrayList<>();
-        exampleList.add(new Evento(nome, esporte, "17/09/19"));
-        exampleList.add(new Evento("Apoio", "Rugby", "17/09/19"));
-//        exampleList.add(new Evento("Pelada", "Futebol", "vai sef uderesfhsdgfwrvfysdgf"));
+        exampleList.add(new Evento("Campeonato", "Tênis de mesa", "Softplan", "12/07/19", "14:00", "17:00", "Venham todos participar, será entregue um prêmio aos vencedores."));
+//        exampleList.add(new Evento("Pelada", "Futebol", "10/10/19"));
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(getActivity());

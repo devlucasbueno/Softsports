@@ -18,15 +18,29 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
     public static class EventoViewHolder extends RecyclerView.ViewHolder{
 
         LinearLayout linearLayout;
+        public ImageButton imgButton;
+
         public AppCompatTextView titulo;
         public AppCompatTextView esporte;
-        public ImageButton imgButton;
+        public AppCompatTextView local;
+        public AppCompatTextView dataEvento;
+        public AppCompatTextView hrInicio;
+        public AppCompatTextView hrTermino;
+        public AppCompatTextView descricao;
+
 
         public EventoViewHolder(@NonNull View itemView) {
             super(itemView);
 
             titulo = itemView.findViewById(R.id.tvTituloEvento);
             esporte = itemView.findViewById(R.id.tvEsporte);
+            local = itemView.findViewById(R.id.tvLocalEvento);
+            dataEvento = itemView.findViewById(R.id.tvDataDoEvento);
+            hrInicio = itemView.findViewById(R.id.tvHoraInicio);
+            hrTermino = itemView.findViewById(R.id.tvHoraTermino);
+            descricao = itemView.findViewById(R.id.tvDescricao);
+
+            //Onclick botões
             imgButton = itemView.findViewById(R.id.btnSetaPraBaixo);
             linearLayout = itemView.findViewById(R.id.layoutEsconder);
 
@@ -67,8 +81,13 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
 
         Evento evento = mEventoArrayList.get(i);
 
-        holder.titulo.setText(evento.getNomeEvento());
+        holder.titulo.setText(evento.getTitulo());
         holder.esporte.setText(evento.getEsporte());
+        holder.local.setText(evento.getLocal());
+        holder.dataEvento.setText(evento.getDataEvento());
+        holder.hrInicio.setText(evento.getHrInicio());
+        holder.hrTermino.setText(evento.getHrTermino());
+        holder.descricao.setText(evento.getDescricao());
 
     }
 

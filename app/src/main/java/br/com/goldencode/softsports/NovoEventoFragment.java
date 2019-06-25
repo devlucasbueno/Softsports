@@ -211,15 +211,15 @@ public class NovoEventoFragment extends Fragment {
                         progressDialog.dismiss();
 
                         Softsports db = new Softsports(getActivity());
-                        boolean insert =  db.novoEvento(new Evento(titulo, dataAtual, dataEvento, finalCod_esporte, descricao, local, hrInicio, hrTermino, Integer.parseInt(nrParticipantes)));
+                        //boolean insert =  db.novoEvento(new Evento(titulo, dataAtual, dataEvento, finalCod_esporte, descricao, local, hrInicio, hrTermino, Integer.parseInt(nrParticipantes)));
 
-                        if(insert){
-                            progressDialog.dismiss();
-                            snackBarSuccess(viewEvento, "Evento criado com sucesso.");
-                        } else {
-                            snackBarFailed(viewEvento, "Não foi possível criar o evento");
-                            progressDialog.dismiss();
-                        }
+//                        if(insert){
+//                            progressDialog.dismiss();
+//                            snackBarSuccess(viewEvento, "Evento criado com sucesso.");
+//                        } else {
+//                            snackBarFailed(viewEvento, "Não foi possível criar o evento");
+//                            progressDialog.dismiss();
+//                        }
                     }
                 });
 
