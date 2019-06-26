@@ -23,8 +23,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:onClick="abrirActivityPerfil"
-            android:src="@drawable/ft_perfil" />
+            android:src="@drawable/perfil_example" />
 
     </RelativeLayout>
 

@@ -12,9 +12,6 @@ public class FragmentEventosAtivos extends Fragment {
 
     View view;
 
-    public FragmentEventosAtivos() {
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

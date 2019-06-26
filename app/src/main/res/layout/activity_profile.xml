@@ -33,7 +33,7 @@
             android:layout_width="135dp"
             android:layout_height="135dp"
             android:layout_margin="5dp"
-            android:src="@drawable/ft_perfil" />
+            android:src="@drawable/perfil_example" />
 
     </RelativeLayout>
 

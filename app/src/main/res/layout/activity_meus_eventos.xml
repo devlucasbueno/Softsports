@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background"
     tools:context=".MeusEventosActivity">
 
     <include layout="@layout/toolbar" />
@@ -31,5 +30,7 @@
         <include layout="@layout/layout_eventos" />
 
     </android.support.v4.view.ViewPager>
+
+
 
 </LinearLayout>
