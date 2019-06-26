@@ -4,7 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -60,89 +63,71 @@ public class NovoEventoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        SimpleDateFormat formatarData = new SimpleDateFormat("dd-MM-yyyy");
-        Date data = new Date();
-
         final View viewEvento = inflater.inflate(R.layout.fragment_novo_evento, container, false);
 
+        //SQL
+        final SQLiteDatabase mDatabase;
+
+        //EditTexts
         final AppCompatEditText editTextTituloEvento = (AppCompatEditText) viewEvento.findViewById(R.id.edtTituloEvento);
         final AppCompatEditText editTextDataEvento = (AppCompatEditText) viewEvento.findViewById(R.id.edtDataEvento);
         final AppCompatEditText editTextDescricao = (AppCompatEditText) viewEvento.findViewById(R.id.edtDesc);
         final AppCompatEditText editTextLocal = (AppCompatEditText) viewEvento.findViewById(R.id.edtLocal);
         final AppCompatEditText editTextHrInicio = (AppCompatEditText) viewEvento.findViewById(R.id.edtHrInicio);
         final AppCompatEditText editTextHrTermino = (AppCompatEditText) viewEvento.findViewById(R.id.edtHrFim);
-        final AppCompatEditText editTextNrParticipantes = (AppCompatEditText) viewEvento.findViewById(R.id.edtNumeroParticipantes);
-        final String dataAtual = formatarData.format(data);
 
         final ScrollView scrollView = viewEvento.findViewById(R.id.layoutCardView);
 
         AppCompatButton buttonCriarNovoEvento = (AppCompatButton) viewEvento.findViewById(R.id.btnCriarEvento);
 
+        Softsports dbHelper = new Softsports(getActivity());
+        mDatabase = dbHelper.getWritableDatabase();
 
         buttonCriarNovoEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 final ProgressDialog progressDialog;
-                final String titulo = editTextTituloEvento.getText().toString().trim();
-                final String dataEvento = editTextDataEvento.getText().toString().trim();
-                final String descricao = editTextDescricao.getText().toString().trim();
-                final String local = editTextLocal.getText().toString().trim();
-                final String hrInicio = editTextHrInicio.getText().toString().trim();
-                final String hrTermino = editTextHrTermino.getText().toString().trim();
-                final String nrParticipantes = editTextNrParticipantes.getText().toString();
-
                 progressDialog = new ProgressDialog(getActivity(), R.style.customAlertDialogStyle);
 
-                if (titulo == null || TextUtils.isEmpty(titulo)){
 
+
+                if (editTextTituloEvento.getText().toString().trim() == null){
                     snackBarFailed(viewEvento, "O campo título está vazio");
                     return;
-
                 }
 
-                if (dataEvento == null || TextUtils.isEmpty(dataEvento)){
-
+                if (editTextLocal.getText().toString().trim() == null){
                     snackBarFailed(viewEvento, "O campo data evento está vazio");
                     return;
-
                 }
 
-                if (descricao == null || TextUtils.isEmpty(descricao)){
-
+                if (editTextDataEvento.getText().toString().trim() == null){
                     snackBarFailed(viewEvento, "O campo descrição está vazio");
                     return;
-
                 }
 
-                if (local == null || TextUtils.isEmpty(local)){
-
+                if (editTextHrInicio.getText().toString().trim() == null){
                     snackBarFailed(viewEvento, "O campo local está vazio");
                     return;
-
                 }
 
-                if (hrInicio == null || TextUtils.isEmpty(hrInicio)){
-
+                if (editTextHrTermino.getText().toString().trim() == null){
                     snackBarFailed(viewEvento, "O campo horário de início está vazio");
                     return;
-
                 }
 
-                if (hrTermino == null || TextUtils.isEmpty(hrInicio)){
-
+                if (editTextDescricao.getText().toString().trim() == null){
                     snackBarFailed(viewEvento, "O campo hora término está vazio");
                     return;
-
                 }
 
-                if (nrParticipantes == null || TextUtils.isEmpty(nrParticipantes)){
-
-                    snackBarFailed(viewEvento, "O campo número de participantes está vazio");
-                    return;
-
-                }
+                final String titulo = editTextTituloEvento.getText().toString().trim();
+                final String local = editTextLocal.getText().toString().trim();
+                final String dataEvento = editTextDataEvento.getText().toString().trim();
+                final String hrInicio = editTextHrInicio.getText().toString().trim();
+                final String hrTermino = editTextHrTermino.getText().toString().trim();
+                final String descricao = editTextDescricao.getText().toString().trim();
 
                 int cod_esporte = 0;
 
@@ -179,15 +164,13 @@ public class NovoEventoFragment extends Fragment {
 
                 }
 
-
-                //  ----- Pegar o texto do radiobutton ----- //
                 int selected = selectedId.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton) selectedId.findViewById(selected);
-                String text = radioButton.getText().toString();
+                final String text = radioButton.getText().toString();
+
 
 
                 //Função que controla o progressdialog e cadastra o usuário:
-
                 progressDialog.setMessage("Criando evento, aguarde.");
                 progressDialog.show();
                 Runnable progressRunnable = new Runnable() {
@@ -201,16 +184,32 @@ public class NovoEventoFragment extends Fragment {
                 Handler pdCanceller = new Handler();
                 pdCanceller.postDelayed(progressRunnable, 3000);
 
-                final int finalCod_esporte = cod_esporte;
 
-                Toast.makeText(getContext(), "Só pra testar, "+finalCod_esporte, Toast.LENGTH_LONG).show();
+
+                final int finalCod_esporte = cod_esporte;
+                final int finalCod_esporte1 = cod_esporte;
 
                 progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
                         progressDialog.dismiss();
 
-                        Softsports db = new Softsports(getActivity());
+                        ContentValues cv = new ContentValues();
+                        cv.put(EventoContract.EventoEntry.TITULO_EVENTO, titulo);
+                        cv.put(EventoContract.EventoEntry.ESPORTE, text);
+                        cv.put(EventoContract.EventoEntry.LOCAL, local);
+                        cv.put(EventoContract.EventoEntry.DT_EVENTO, dataEvento);
+                        cv.put(EventoContract.EventoEntry.HR_INICIO, hrInicio);
+                        cv.put(EventoContract.EventoEntry.HR_TERMINO, hrTermino);
+                        cv.put(EventoContract.EventoEntry.DESCRICAO, descricao);
+                        cv.put(EventoContract.EventoEntry.FK_ESPORTE, finalCod_esporte1);
+
+                        snackBarSuccess(viewEvento, "Evento criado com sucesso!");
+
+                        mDatabase.insert(EventoContract.EventoEntry.TABELA_EVENTO, null, cv);
+
+
+
                         //boolean insert =  db.novoEvento(new Evento(titulo, dataAtual, dataEvento, finalCod_esporte, descricao, local, hrInicio, hrTermino, Integer.parseInt(nrParticipantes)));
 
 //                        if(insert){

@@ -19,6 +19,9 @@ public class FragmentEventosCriados extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.eventos_criados_fragment, container, false);
+
+
+
         return view;
     }
 }

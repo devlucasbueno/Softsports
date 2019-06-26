@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class TelaInicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener{
+public class TelaInicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     AppCompatImageButton imageButton;
     Toolbar toolbar;
@@ -123,6 +123,7 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
@@ -160,16 +161,6 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     public void abrirActivityDoEvento(View view) {

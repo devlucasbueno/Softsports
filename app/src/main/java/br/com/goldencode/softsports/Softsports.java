@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import br.com.goldencode.softsports.EventoContract.*;
 
 public class Softsports extends SQLiteOpenHelper {
 
@@ -78,24 +79,35 @@ public class Softsports extends SQLiteOpenHelper {
         db.execSQL(QUERY_TABELA_SOFTPLAYER);
 
         //Query evento
-        String QUERY_TABELA_EVENTO = "CREATE TABLE " + TABELA_EVENTO + "("
-                + COD_EVENTO + " INTEGER PRIMARY KEY, " + COD_ESPORTE + " INTEGER, "
-                + TITULO_EVENTO + " TEXT, "
-                + ESPORTE + " TEXT, "
-                + LOCAL + " TEXT, "
-                + DT_EVENTO + " TEXT, "
-                + HR_INICIO + " TEXT, "
-                + HR_TERMINO + " TEXT, "
-                + DESCRICAO + " TEXT, "
-                + " FOREIGN KEY (" + FK_ESPORTE + " ) "
-                + " REFERENCES " + TABELA_ESPORTE + "(" + COD_ESPORTE + " ))";
+        String QUERY_TABELA_EVENTO = "CREATE TABLE " +
+
+                EventoEntry.TABELA_EVENTO + "(" +
+                EventoEntry.COD_EVENTO + " INTEGER PRIMARY KEY, " + COD_ESPORTE + " INTEGER, " +
+                EventoEntry.TITULO_EVENTO + " TEXT, " +
+                EventoEntry.ESPORTE + " TEXT, " +
+                EventoEntry.LOCAL + " TEXT, " +
+                EventoEntry.DT_EVENTO + " TEXT, " +
+                EventoEntry.HR_INICIO + " TEXT, " +
+                EventoEntry.HR_TERMINO + " TEXT, " +
+                EventoEntry.DESCRICAO + " TEXT, " +
+                EventoEntry.TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                " FOREIGN KEY (" + FK_ESPORTE + " ) " +
+                " REFERENCES " + TABELA_ESPORTE + "(" + COD_ESPORTE + " ))";
 
         db.execSQL(QUERY_TABELA_EVENTO);
 
     }
 
+    public SQLiteDatabase pegarDados(){
+        SQLiteDatabase mDatabase = this.getReadableDatabase();
+        return mDatabase;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + EventoEntry.TABELA_EVENTO);
+        onCreate(db);
 
     }
 
@@ -108,34 +120,6 @@ public class Softsports extends SQLiteOpenHelper {
         values.put(NOME_ESPORTE, esporte.getNome_esporte());
 
         db.insert(TABELA_ESPORTE, null , values);
-    }
-
-    boolean novoEvento(Evento evento){
-
-        //Escrever na base de dados
-        SQLiteDatabase bdd_softsports = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-
-        values.put(COD_ESPORTE, evento.getFk_esporte());
-        values.put(TITULO_EVENTO, evento.getTitulo());
-        values.put(ESPORTE, evento.getEsporte());
-        values.put(LOCAL, evento.getLocal());
-        values.put(DT_EVENTO, evento.getDataEvento());
-        values.put(HR_INICIO, evento.getHrInicio());
-        values.put(HR_TERMINO, evento.getHrTermino());
-        values.put(DESCRICAO, evento.getDescricao());
-
-        bdd_softsports.insert(TABELA_EVENTO, null, values);
-
-        Cursor cur = bdd_softsports.rawQuery("SELECT COUNT(*) FROM evento", null);
-        if (cur.getCount() > 0){
-
-            return true;
-        }
-        else
-            return false;
-
     }
 
     boolean cadastrarSoftplayer(Usuario softplayer) {

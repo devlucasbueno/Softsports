@@ -14,7 +14,7 @@ public class Evento {
     private String descricao;
 
     //Construtores
-    
+
     public Evento(String titulo, String esporte, String local, String dataEvento, String hrInicio, String hrTermino, String descricao) {
         this.titulo = titulo;
         this.esporte = esporte;

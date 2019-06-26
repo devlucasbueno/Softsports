@@ -1,5 +1,7 @@
 package br.com.goldencode.softsports;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,7 +19,20 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
+    private Cursor getAllItems(SQLiteDatabase mDatabase){
+        return mDatabase.query(
+                EventoContract.EventoEntry.TABELA_EVENTO,
+                null,
+                null,
+                null,
+                null,
+                null,
+                EventoContract.EventoEntry.TIMESTAMP + " DESC"
+        );
+    }
+
     View view;
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -27,16 +42,13 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-
-        ArrayList<Evento> exampleList = new ArrayList<>();
-        exampleList.add(new Evento("Campeonato", "Tênis de mesa", "Softplan", "12/07/19", "14:00", "17:00", "Venham todos participar, será entregue um prêmio aos vencedores."));
-//        exampleList.add(new Evento("Pelada", "Futebol", "10/10/19"));
+        Softsports dbHelper = new Softsports(getActivity());
+        SQLiteDatabase mDatabase = dbHelper.getWritableDatabase();
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(getActivity());
         ((LinearLayoutManager) mLayoutManager).setOrientation(LinearLayoutManager.VERTICAL);
-        mAdapter = new EventoAdapter(exampleList);
+        mAdapter = new EventoAdapter(getActivity(), getAllItems(mDatabase));
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);

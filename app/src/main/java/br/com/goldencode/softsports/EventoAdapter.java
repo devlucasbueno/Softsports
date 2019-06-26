@@ -1,5 +1,7 @@
 package br.com.goldencode.softsports;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +11,18 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-
 public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoViewHolder> {
 
-    private ArrayList<Evento> mEventoArrayList;
+    private Context mContext;
+    private Cursor mCursor;
+
+
+    public EventoAdapter(Context context, Cursor cursor) {
+
+        mContext = context;
+        mCursor = cursor;
+
+    }
 
     public static class EventoViewHolder extends RecyclerView.ViewHolder{
 
@@ -60,12 +69,6 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
         }
     }
 
-    public EventoAdapter (ArrayList<Evento> eventoArrayList){
-
-        mEventoArrayList = eventoArrayList;
-
-    }
-
     @NonNull
     @Override
     public EventoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -79,21 +82,44 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
     @Override
     public void onBindViewHolder(@NonNull EventoViewHolder holder, int i) {
 
-        Evento evento = mEventoArrayList.get(i);
+        if (!mCursor.move(i)){
+            return;
+        }
 
-        holder.titulo.setText(evento.getTitulo());
-        holder.esporte.setText(evento.getEsporte());
-        holder.local.setText(evento.getLocal());
-        holder.dataEvento.setText(evento.getDataEvento());
-        holder.hrInicio.setText(evento.getHrInicio());
-        holder.hrTermino.setText(evento.getHrTermino());
-        holder.descricao.setText(evento.getDescricao());
+        String titulo = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.TITULO_EVENTO));
+        String esporte = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.ESPORTE));
+        String local = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.LOCAL));
+        String dataEvento = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.DT_EVENTO));
+        String hrInicio = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.HR_INICIO));
+        String hrTermino = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.HR_TERMINO));
+        String descricao = mCursor.getString(mCursor.getColumnIndex(EventoContract.EventoEntry.DESCRICAO));
+
+        holder.titulo.setText(titulo);
+        holder.esporte.setText(esporte);
+        holder.local.setText(local);
+        holder.dataEvento.setText(dataEvento);
+        holder.hrInicio.setText(hrInicio);
+        holder.hrTermino.setText(hrTermino);
+        holder.descricao.setText(descricao);
 
     }
 
     @Override
     public int getItemCount() {
-        return mEventoArrayList.size();
+        return mCursor.getCount();
     }
 
+    public void swapCursor(Cursor newCursor){
+
+        if (mCursor != null){
+            mCursor.close();
+        }
+
+        mCursor = newCursor;
+
+        if (newCursor != null){
+            notifyDataSetChanged();
+        }
+
+    }
 }
