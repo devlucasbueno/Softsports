@@ -21,6 +21,7 @@
         <activity android:name=".MeusEventosActivity" />
         <activity android:name=".ActivityCadastro" />
         <activity android:name=".TelaInicialActivity" />
+        <activity android:name=".ListaMain" />
     </application>
 
 </manifest>

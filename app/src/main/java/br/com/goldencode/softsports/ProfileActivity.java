@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -26,6 +27,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
+
+        TextView nomeusuario = (TextView) findViewById(R.id.tvNomeCompleto);
+        TextView email = findViewById(R.id.tvEmail);
+
+        nomeusuario.setText(SingletonUsuario.getInstance().getUsuario().getNome());
+        email.setText(SingletonUsuario.getInstance().getUsuario().getEmail());
 
         drawable = (Drawable) ResourcesCompat.getDrawable(getResources(), R.drawable.ic_arrow_back, getTheme());
 

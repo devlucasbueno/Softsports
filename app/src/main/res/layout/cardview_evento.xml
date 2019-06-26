@@ -62,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
                 android:fontFamily="@font/helvetica_neue_light"
                 android:text=""
                 android:textColor="@color/colorPrimaryDark"
@@ -69,64 +70,73 @@
                 tools:targetApi="jelly_bean" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="18dp"
-                android:orientation="horizontal">
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tvDataDoEvento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:fontFamily="@font/helvetica_neue_light"
-                    android:text=""
-                    android:textColor="#5E5E5E"
-                    android:textSize="20sp"
-                    tools:targetApi="jelly_bean"
-                    android:layout_marginRight="15dp" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:fontFamily="@font/helvetica_neue_light"
-                    android:text=""
-                    android:textColor="#5E5E5E"
-                    android:textSize="20sp"
-                    tools:targetApi="jelly_bean"
-                    android:layout_marginRight="15dp" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tvHoraInicio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/helvetica_neue_light"
-                    android:text=""
-                    android:textColor="#5E5E5E"
-                    android:textSize="20sp"
-                    tools:targetApi="jelly_bean" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tvHoraTermino"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/helvetica_neue_light"
-                    android:text=""
-                    android:textColor="#5E5E5E"
-                    android:textSize="20sp"
-                    tools:targetApi="jelly_bean" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/layoutEsconder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tvDataDoEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text=""
+                        android:textColor="#5E5E5E"
+                        android:textSize="20sp"
+                        tools:targetApi="jelly_bean"
+                        android:layout_marginRight="15dp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text=""
+                        android:textColor="#5E5E5E"
+                        android:textSize="20sp"
+                        tools:targetApi="jelly_bean"
+                        android:layout_marginRight="15dp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tvHoraInicio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text=""
+                        android:textColor="#5E5E5E"
+                        android:textSize="20sp"
+                        tools:targetApi="jelly_bean" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text=" - "
+                        android:textColor="#5E5E5E"
+                        android:textSize="20sp"
+                        tools:targetApi="jelly_bean" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tvHoraTermino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text=""
+                        android:textColor="#5E5E5E"
+                        android:textSize="20sp"
+                        tools:targetApi="jelly_bean" />
+
+                </LinearLayout>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvDescricao"

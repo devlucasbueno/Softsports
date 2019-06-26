@@ -60,6 +60,11 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
 
         navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.tvNomeCompleto);
+        navUsername.setText(SingletonUsuario.getInstance().getUsuario().getNome());
+        TextView navEmail = (TextView) headerView.findViewById(R.id.tvEmail);
+        navEmail.setText(SingletonUsuario.getInstance().getUsuario().getEmail());
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
@@ -178,6 +183,10 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
             super.onBackPressed();
         }
 
+    }
+    public void abrirListadeesportes(View view){
+        Intent intent = new Intent(getApplicationContext(), ListaMain.class);
+        startActivity(intent);
     }
 
 }
