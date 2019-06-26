@@ -208,17 +208,6 @@ public class NovoEventoFragment extends Fragment {
 
                         mDatabase.insert(EventoContract.EventoEntry.TABELA_EVENTO, null, cv);
 
-
-
-                        //boolean insert =  db.novoEvento(new Evento(titulo, dataAtual, dataEvento, finalCod_esporte, descricao, local, hrInicio, hrTermino, Integer.parseInt(nrParticipantes)));
-
-//                        if(insert){
-//                            progressDialog.dismiss();
-//                            snackBarSuccess(viewEvento, "Evento criado com sucesso.");
-//                        } else {
-//                            snackBarFailed(viewEvento, "Não foi possível criar o evento");
-//                            progressDialog.dismiss();
-//                        }
                     }
                 });
 

@@ -73,16 +73,16 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
     @Override
     public EventoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview_evento, viewGroup, false);
-        EventoViewHolder evh = new EventoViewHolder(v);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View view =inflater.inflate(R.layout.cardview_evento, viewGroup, false);
 
-        return evh;
+        return new EventoViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull EventoViewHolder holder, int i) {
 
-        if (!mCursor.move(i)){
+        if (!mCursor.moveToPosition(i)){
             return;
         }
 

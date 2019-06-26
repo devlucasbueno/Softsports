@@ -35,7 +35,6 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Nullable
     @Override
@@ -46,11 +45,8 @@ public class HomeFragment extends Fragment {
         SQLiteDatabase mDatabase = dbHelper.getWritableDatabase();
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        ((LinearLayoutManager) mLayoutManager).setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new EventoAdapter(getActivity(), getAllItems(mDatabase));
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
         return view;
